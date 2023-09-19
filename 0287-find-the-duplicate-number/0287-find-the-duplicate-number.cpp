@@ -3,11 +3,12 @@ public:
     int findDuplicate(vector<int>& nums) {
         ios::sync_with_stdio(0);
         cin.tie(0);
-        sort(nums.begin(),nums.end());
-        for(int i = 0, size = nums.size() - 1; i < size; ++i)
+        int visit[100001] = {0};
+        for(int i = 0, size = nums.size(); i < size; ++i)
         {
-          if (nums[i] == nums[i + 1])
+          if (visit[nums[i]])
             return nums[i];
+          visit[nums[i]] = 1;
         }
         return -1;
     }
