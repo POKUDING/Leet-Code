@@ -1,6 +1,8 @@
 class Solution {
 public:
     double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
+        ios::sync_with_stdio(0);
+        cin.tie(0);
         int num1_i = 0;
         int num2_i = 0;
         int num1_size = nums1.size();
