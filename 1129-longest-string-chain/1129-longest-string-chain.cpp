@@ -5,6 +5,8 @@ public:
         return a.length() < b.length();
     }
     int longestStrChain(vector<string>& words) {
+        ios::sync_with_stdio(0);
+        cin.tie(0);
         int rtn = 0;
         unordered_map<string, int> map;
         int longest;
