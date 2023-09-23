@@ -12,7 +12,7 @@ public:
         int longest;
 
         sort(words.begin(), words.end(), compareByLength);
-        for(string s : words)
+        for(string& s : words)
         {
             longest = 0;
             for (int i = 0, size = s.length(); i < size; ++i)
