@@ -11,13 +11,12 @@ public:
         
         for(int i = 0, len = s.length(); i < len; ++i)
         {
-          if (!seen[s[i] - 'a'])
-          {
-            while (top != -1 && i < last[stack[top] - 'a'] && s[i] < stack[top])
-              seen[stack[top--] - 'a'] = false;
-            seen[s[i] - 'a'] = true;
-            stack[++top] = s[i];
-          }
+          if (seen[s[i] - 'a'])
+            continue;
+          while (top != -1 && i < last[stack[top] - 'a'] && s[i] < stack[top])
+            seen[stack[top--] - 'a'] = false;
+          seen[s[i] - 'a'] = true;
+          stack[++top] = s[i];
         }
         return string(stack, top + 1);
     }
