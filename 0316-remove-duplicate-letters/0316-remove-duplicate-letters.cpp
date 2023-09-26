@@ -1,8 +1,6 @@
 class Solution {
 public:
     string removeDuplicateLetters(string s) {
-        ios::sync_with_stdio(0);
-        cin.tie(0);
         unordered_map<char, int> last;
         stack<char> tmp;
         unordered_set<char>  seen;
