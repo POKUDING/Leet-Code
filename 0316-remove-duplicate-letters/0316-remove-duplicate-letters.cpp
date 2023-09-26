@@ -1,34 +1,25 @@
 class Solution {
 public:
     string removeDuplicateLetters(string s) {
-        unordered_map<char, int> last;
-        stack<char> tmp;
-        unordered_set<char>  seen;
-        
+        int     last[26] ={0};
+        bool    seen[26] = {false};
+        char    stack[26] = {0};
+        int     top = -1;
+
         for(int i = 0, len = s.length(); i < len; ++i)
-          last[s[i]] = i;
+          last[s[i] - 'a'] = i;
         
         for(int i = 0, len = s.length(); i < len; ++i)
         {
           char c = s[i];
-          if (seen.find(c) == seen.end())
+          if (!seen[c - 'a'])
           {
-            while (!tmp.empty() && i < last[tmp.top()] && c < tmp.top())
-            {
-              seen.erase(tmp.top());
-              tmp.pop();
-            }
-            seen.insert(c);
-            tmp.push(c);
+            while (top != -1 && i < last[stack[top] - 'a'] && c < stack[top])
+              seen[stack[top--] - 'a'] = false;
+            seen[c - 'a'] = true;
+            stack[++top] = c;
           }
         }
-        string rtn;
-        while(!tmp.empty())
-        {
-          rtn += tmp.top();
-          tmp.pop();
-        }
-        reverse(rtn.begin(), rtn.end());
-        return rtn;
+        return string(stack, top + 1);
     }
 };
