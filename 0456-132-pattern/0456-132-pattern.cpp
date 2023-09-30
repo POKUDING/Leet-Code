@@ -1,6 +1,9 @@
 class Solution {
 public:
     bool find132pattern(vector<int>& nums) {
+        ios::sync_with_stdio(0);
+        cin.tie(0);
+        cout.tie(0);
         int mid = INT_MIN;
         stack<int> before;
         before.push(nums.back());
