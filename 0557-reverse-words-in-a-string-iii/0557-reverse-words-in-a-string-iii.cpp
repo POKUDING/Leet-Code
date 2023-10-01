@@ -3,6 +3,7 @@ public:
     string reverseWords(string s) {
         ios::sync_with_stdio(0);
         cin.tie(0);
+        cout.tie(0);
         string::iterator it = s.begin();
         string::iterator begin_it = s.begin();
         int size = s.size();
