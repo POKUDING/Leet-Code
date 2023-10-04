@@ -1,9 +1,9 @@
 class MyHashMap {
 private:
-    map<int,int> map;
+    int map[1000001];
 public:
     MyHashMap() {
-
+        memset(map, -1, sizeof(int) * 1000001);
     }
     
     void put(int key, int value) {
@@ -11,14 +11,11 @@ public:
     }
     
     int get(int key) {
-        if(map.contains(key))
-            return map[key];
-        else
-            return -1;
+        return map[key];
     }
     
     void remove(int key) {
-        map.erase(key);
+        map[key] = -1;
     }
 };
 
