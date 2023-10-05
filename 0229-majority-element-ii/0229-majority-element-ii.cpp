@@ -7,8 +7,11 @@ public:
     
         for(auto i : nums) {
             ++store[i];
-            if(store[i] == n + 1)
-                rtn.push_back(i);
+        }
+        for(auto num : store)
+        {
+            if(num.second > n)
+                rtn.push_back(num.first);    
         }
         return rtn;
     }
