@@ -1,6 +1,8 @@
 class Solution {
 public:
     vector<int> majorityElement(vector<int>& nums) {
+        ios::sync_with_stdio(0);
+        cin.tie(0);
         int n = nums.size() / 3;
         unordered_map<int, int> store;
         vector<int> rtn;
