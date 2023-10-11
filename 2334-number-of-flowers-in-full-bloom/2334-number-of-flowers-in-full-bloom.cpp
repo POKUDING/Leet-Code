@@ -1,6 +1,9 @@
 class Solution {
 public:
     vector<int> fullBloomFlowers(vector<vector<int>>& flowers, vector<int>& people) {
+        ios::sync_with_stdio(0);
+        cin.tie(0);
+        cout.tie(0);
         vector<int> ans;
         vector<int> start;
         vector<int> end;
