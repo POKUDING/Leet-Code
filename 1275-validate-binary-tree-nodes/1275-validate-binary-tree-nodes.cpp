@@ -22,7 +22,6 @@ public:
             }
         }
         vector<int>::iterator it = find(par.begin(), par.end(), -1);
-        cout<< "here1\n";
         if (it == par.end())
             return false;
 
@@ -37,10 +36,8 @@ public:
                 que.push(rightChild[que.front()]);
             que.pop();
         }
-        cout<< "here2\n";
         for(int i = 0; i < n; ++i)
         {
-            cout << par[i] << " ";
             if(par[i] != -2)
                 return false;
         }
