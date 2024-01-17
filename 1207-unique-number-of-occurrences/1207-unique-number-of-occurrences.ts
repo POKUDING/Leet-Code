@@ -1,19 +1,15 @@
 function uniqueOccurrences(arr: number[]): boolean {
-    let occurrences: Map<number, number> = new Map<number, number>();
-    for (let i = 0; i < arr.length; i++) {
-        if (!occurrences.has(arr[i])) {
-            occurrences.set(arr[i], 1);
-        } else {
-            occurrences.set(arr[i],  occurrences.get(arr[i]) + 1);
-        }
+    const map = new Map();
+    const times = new Map();
+    for(const num of arr) {
+        if (!map[num])
+            map[num] = 0;
+        map[num]++;
     }
-    
-    let occurrenceValues: number[] = [...occurrences.values()].sort((a:number, b:number) => a - b);
-    for (let i = 1; i < occurrenceValues.length; i++) {
-        if (occurrenceValues[i] === occurrenceValues[i-1]) {
+    for (const key in map) {
+        if(times[map[key]])
             return false;
-        }
+        times[map[key]] = key;
     }
-
-    return true;
+    return true
 };
