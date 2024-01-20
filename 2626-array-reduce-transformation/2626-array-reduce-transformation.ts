@@ -5,8 +5,8 @@ function reduce(nums: number[], fn: Fn, init: number): number {
 
     if(!nums.length)
         return init;
-    rtn = fn(init, nums[0]);
-    for(let i = 1; i < nums.length; ++i) {
+    rtn = init
+    for(let i = 0; i < nums.length; ++i) {
         rtn = fn(rtn, nums[i]);
     }
     return rtn;
