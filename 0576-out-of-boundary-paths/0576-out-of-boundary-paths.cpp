@@ -2,7 +2,7 @@ class Solution {
 public:
     int dir[4] = {1, 0 , -1, 0};
     int mod = 1000000007;
-    int cntWays(vector<vector<vector<int>>>& dp, int x, int y,int m,int n, int maxMove, int moves) {
+    int cntWays(int dp[51][51][51], int x, int y,int m,int n, int maxMove, int moves) {
         int rtn = 0;
         if (moves >= maxMove)
             return 0;
@@ -22,8 +22,9 @@ public:
     }
     int findPaths(int m, int n, int maxMove, int startRow, int startColumn) {
         int ans = 0;
-        vector<vector<vector<int>>> dp(maxMove, vector<vector<int>>(m, vector<int>(n, -1)));
+        int dp[51][51][51];
 
+        memset(dp, -1, sizeof dp);
         ans = cntWays(dp, startColumn, startRow, m, n, maxMove,0);
         return ans;
     }
