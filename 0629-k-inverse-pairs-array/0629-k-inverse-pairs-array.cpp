@@ -6,8 +6,8 @@ public:
         };
 
         for (int i = 1; i <= n; ++i) {
-            for (int j = 0; j <= k; ++j) {
-                for (int x = 0; x <= min(j, i - 1); ++x) {
+            for (int j = 0; j <= k && j < i; ++j) {
+                for (int x = 0; x <= j; ++x) {
                     if (j - x >= 0)
                         dp[i][j] = (dp[i][j] + dp[i - 1][j - x]) % 1000000007;
                 }
