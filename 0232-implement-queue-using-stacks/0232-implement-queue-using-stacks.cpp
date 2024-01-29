@@ -27,9 +27,7 @@ public:
         return que.top();
     }
     
-    bool empty() {
-        return que.empty();
-    }
+    bool empty() return que.empty();
 };
 
 /**
