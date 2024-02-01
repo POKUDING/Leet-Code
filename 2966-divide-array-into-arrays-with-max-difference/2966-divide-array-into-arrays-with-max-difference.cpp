@@ -6,10 +6,12 @@ public:
         vector<vector<int>> empty;
         vector<vector<int>> rtn(len / 3, vector<int>());
 
-        for (int i = 0; i < len; ++i) {
-            if (rtn[i / 3].empty() || nums[i] - rtn[i / 3].front() <= k)
+        for (int i = 0; i < len; i += 3) {
+            if (nums[i + 2] - nums[i] <= k) {
                 rtn[i / 3].push_back(nums[i]);
-            else
+                rtn[i / 3].push_back(nums[i + 1]);
+                rtn[i / 3].push_back(nums[i + 2]);
+            } else
                 return empty;
         }
         return rtn;
