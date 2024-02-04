@@ -7,7 +7,6 @@ public:
 
         for(int i = 0; i < t.size(); ++i)
             ++mp[t[i]];
-        
         for(int end = 0, start = 0; end < s.size(); ++end) {
             if (--mp[s[end]] >= 0)
                 --cnt;
