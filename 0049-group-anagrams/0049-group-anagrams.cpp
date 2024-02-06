@@ -9,7 +9,7 @@ public:
             sort(tmp.begin(), tmp.end());
             memo[tmp].push_back(strs[i]);
         }
-        for(auto it = memo.begin(); it != memo.end(); ++it)
+        for(map<string,vector<string>>::iterator it = memo.begin(); it != memo.end(); ++it)
             rtn.push_back(it->second);
         return rtn;
     }
