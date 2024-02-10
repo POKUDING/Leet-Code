@@ -4,6 +4,7 @@ public:
         int len = nums.size();
         int max_dp = 0, max_idx = 0;
         vector<int> dp(len, 0), before(len), ans;
+
         sort(nums.begin(), nums.end());
         for (int i = 0; i < len; ++i) {
             before[i] = -1;
