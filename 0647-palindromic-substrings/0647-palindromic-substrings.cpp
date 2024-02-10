@@ -3,10 +3,9 @@ public:
     int cnt(int s, int e, string& str) {
         int rtn = 0;
         while(s >= 0 && e < str.size()) {
-            if(str[s--] == str[e++]) {
+            if(str[s--] == str[e++])
                 ++rtn;
-                cout << s + 1 << " " << e - 1 <<"\n";
-            } else 
+            else 
                 break;
         }
         return rtn;
