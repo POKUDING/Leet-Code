@@ -1,6 +1,7 @@
 class Solution {
 public:
     vector<int> largestDivisibleSubset(vector<int>& nums) {
+        cin.tie(0); ios::sync_with_stdio(0);
         int len = nums.size();
         int max_dp = 0, max_idx = 0;
         vector<int> dp(len, 0), before(len), ans;
