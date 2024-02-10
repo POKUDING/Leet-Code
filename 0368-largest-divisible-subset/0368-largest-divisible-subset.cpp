@@ -1,34 +1,28 @@
 class Solution {
 public:
-    vector<vector<int>> dp;
-    vector<int> getMax(int idx, vector<int>& nums) {
-        int maxsize = 0;
-        vector<int> tmp;
-        if (dp[idx].size() != 0)
-            return dp[idx];
-        for (int i = 0; i < idx; ++i) {
-            if (nums[idx] % nums[i] == 0) {
-                tmp = getMax(i, nums);
-                if (tmp.size() > maxsize) {
-                    dp[idx] = tmp;
-                    maxsize = tmp.size();
+    vector<int> largestDivisibleSubset(vector<int>& nums) {
+        int len = nums.size();
+        int max_dp = 0;
+        int max_idx = 0;
+        vector<int> dp(len, 0), before(len), ans;
+        sort(nums.begin(), nums.end());
+        for(int i = 0; i < len; ++i) {
+            before[i] = -1;
+            for(int j = 0; j < i; ++j) {
+                if(nums[i] % nums[j] == 0 && dp[j] > dp[i]) {
+                    dp[i] = dp[j];
+                    before[i] = j;
                 }
             }
-        }
-        dp[idx].push_back(nums[idx]);
-        return dp[idx];
-    }
-    vector<int> largestDivisibleSubset(vector<int>& nums) {
-        sort(nums.begin(), nums.end());
-        dp = vector<vector<int>>(1001, vector<int>());
-        int maxidx = 0;
-        int maxsize = 0;
-        for (int i = 0; i < nums.size(); ++i) {
-            if (maxsize < getMax(i, nums).size()) {
-                maxidx = i;
-                maxsize = dp[i].size();
+            if(max_dp < ++dp[i]) {
+                max_idx = i;
+                max_dp = dp[i];
             }
         }
-        return dp[maxidx];
+        while(max_idx != -1) {
+            ans.push_back(nums[max_idx]);
+            max_idx = before[max_idx];
+        }
+        return ans;
     }
 };
