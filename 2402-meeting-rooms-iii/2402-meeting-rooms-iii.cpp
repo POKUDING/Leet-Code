@@ -1,3 +1,4 @@
+const static auto _ = [] { std::ios::sync_with_stdio(false); std::cin.tie(nullptr); std::cout.tie(nullptr); return nullptr; }();
 class Solution {
 public:
     static bool sortFunc(vector<int>& a, vector<int>&b) {
@@ -45,9 +46,9 @@ public:
             }
         }
         sort(rooms.begin(),rooms.begin() + n, sortFunc);
-        for(int i = 0; i < n; ++i) {
-            cout << rooms[i][1] << " " <<rooms[i][0] << "\n";
-        }
+        // for(int i = 0; i < n; ++i) {
+        //     cout << rooms[i][1] << " " <<rooms[i][0] << "\n";
+        // }
         return rooms[0][1];
     }
 };
