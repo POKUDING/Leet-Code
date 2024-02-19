@@ -1,8 +1,1 @@
-class Solution {
-public:
-    bool isPowerOfTwo(int n) {
-        if(__builtin_popcount(n) != 1 || n <= 0)
-            return false;
-        return true;
-    }
-};
+class Solution { public: bool isPowerOfTwo(int n) { if(n <= 0) return false; else return (__builtin_popcount(n) == 1);}};
