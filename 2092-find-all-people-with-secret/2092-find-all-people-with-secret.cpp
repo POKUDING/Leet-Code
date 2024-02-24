@@ -3,7 +3,7 @@ public:
     vector<int> findAllPeople(int n, vector<vector<int>>& meetings, int firstPerson) {
         queue<int> que;
         vector<int> know(n, INT_MAX);
-        set<int> rtn;
+        vector<int> rtn;
         vector<vector<vector<int>>> memo(n);
 
         for(int i = 0; i < meetings.size(); ++i) {
@@ -17,7 +17,6 @@ public:
         while(!que.empty()) {
             int from = que.front();
             int time = know[from];
-            rtn.insert(from);
             que.pop();
             for(int i = 0; i < memo[from].size(); ++i) {
                 int met = memo[from][i][0];
@@ -28,6 +27,10 @@ public:
                 }
             }
         }
-        return vector<int>(rtn.begin(), rtn.end());
+        for(int i = 0; i < n; ++i) {
+            if(know[i] != INT_MAX)
+                rtn.push_back(i);
+        }
+        return rtn;
     }
 };
