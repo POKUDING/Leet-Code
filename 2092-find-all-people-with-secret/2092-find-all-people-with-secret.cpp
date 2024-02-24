@@ -2,7 +2,7 @@ class Solution {
 public:
     vector<int> findAllPeople(int n, vector<vector<int>>& meetings, int firstPerson) {
         queue<int> que;
-        vector<int> know(n, INT_MAX);
+        vector<int> know(n, -1);
         vector<int> rtn;
         vector<vector<vector<int>>> memo(n);
 
@@ -21,7 +21,7 @@ public:
             for(int i = 0; i < memo[from].size(); ++i) {
                 int met = memo[from][i][0];
                 int mettime = memo[from][i][1];
-                if(know[met] > mettime && mettime >= time) {
+                if((know[met] == -1 || know[met] > mettime) && mettime >= time) {
                     know[met] = mettime;
                     que.push(met);
                 }
