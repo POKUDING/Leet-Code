@@ -28,7 +28,7 @@ public:
             }
         }
         for(int i = 0; i < n; ++i) {
-            if(know[i] != INT_MAX)
+            if(know[i] != -1)
                 rtn.push_back(i);
         }
         return rtn;
