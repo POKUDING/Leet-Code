@@ -1,11 +1,10 @@
-포쿠 — 2024.02.17. 오후 7:34
 const static auto _ = [] { std::ios::sync_with_stdio(false); std::cin.tie(nullptr); std::cout.tie(nullptr); return nullptr; }();
 class Solution {
 public:
     vector<int> findAllPeople(int n, vector<vector<int>>& meetings, int firstPerson) {
         queue<int> que;
         vector<int> know(n, INT_MAX);
-        vector<int> rtn;
+        set<int> rtn;
         vector<pair<int,int>> memo[n];
 
         for(int i = 0; i < meetings.size(); ++i) {
@@ -20,6 +19,7 @@ public:
             int from = que.front();
             int time = know[from];
             que.pop();
+            rtn.insert(from);
             for(int i = 0; i < memo[from].size(); ++i) {
                 int met = memo[from][i].first;
                 int mettime = memo[from][i].second;
@@ -29,10 +29,11 @@ public:
                 }
             }
         }
-        for(int i = 0; i < n; ++i) {
-            if(know[i] < INT_MAX)
-                rtn.push_back(i);
-        }
-        return rtn;
+        // for(int i = 0; i < n; ++i) {
+        //     if(know[i] < INT_MAX)
+        //         rtn.push_back(i);
+        // }
+        // return rtn;
+        return vector<int>(rtn.begin(), rtn.end());
     }
 };
