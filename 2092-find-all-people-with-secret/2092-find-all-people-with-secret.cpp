@@ -21,14 +21,14 @@ public:
             for(int i = 0; i < memo[from].size(); ++i) {
                 int met = memo[from][i].first;
                 int mettime = memo[from][i].second;
-                if((know[met] > mettime) && mettime >= time) {
+                if(know[met] > mettime && mettime >= time) {
                     know[met] = mettime;
                     que.push(met);
                 }
             }
         }
         for(int i = 0; i < n; ++i) {
-            if(know[i] != INT_MAX)
+            if(know[i] < INT_MAX)
                 rtn.push_back(i);
         }
         return rtn;
