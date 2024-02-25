@@ -1,8 +1,6 @@
 class Solution {
 private:
-    int MAX = 100000;
     vector<int> root = vector<int>(100001, -1);
-    // vector<int> primes(MAX + 1);
 public:
     int findRoot(int n) {
         if (root[n] == -1)
@@ -20,11 +18,9 @@ public:
             if (tmp == 1)
                 return false;
             int tmp_root = 0;
-            // cout << tmp << " "  << "\n";
             for (int j = 2; j * j <= tmp; ++j) {
                 if (tmp % j == 0) {
                     int j_root = findRoot(j);
-                    // cout << "tmp: " << tmp << " " << j << " " << j_root<< "\n";
                     if (tmp_root == 0) {
                         tmp_root = j_root;
                     } else {
@@ -42,10 +38,6 @@ public:
                     root[findRoot(tmp)] = tmp_root;
             }
         }
-        // for (int i = 2; i <= 100000; ++i) {
-        //     if(root[i] != -1)
-        //         cout << i << " " << root[i] << "\n";
-        // }
         for (int i = 2; i <= 100000; ++i) {
             if (root[i] == i)
                 ++cnt;
