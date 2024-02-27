@@ -21,7 +21,7 @@ public:
         return max(left_len, right_len);
     }
     int diameterOfBinaryTree(TreeNode* root) {
-        maxlen = max(maxlen,dfs(root));
+        dfs(root);
         return maxlen;
     }
 };
