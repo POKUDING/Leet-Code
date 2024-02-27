@@ -3,7 +3,7 @@ class Solution {
 public:
     // int maxlen = 0;
     int dfs(TreeNode* root, int& maxlen) {
-        if(!root)
+        if (!root)
             return -1;
         int left_len = dfs(root->left, maxlen) + 1;
         int right_len = dfs(root->right, maxlen) + 1;
