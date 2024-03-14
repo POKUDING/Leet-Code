@@ -1,33 +1,34 @@
 class Solution {
 public:
     int numSubarraysWithSum(vector<int>& nums, int goal) {
-        int s = 0, e = 0, backzero = 0, frontzero = 0, ans = 0;
-        while(s < nums.size()) {
-            e = s;
-            int sum = nums[e];
-            int frontzero = 0;
-            int backzero = 0;
-            if (sum > goal) {
-                ++s;
-                continue;
+        int start = 0;
+        int prefixZeros = 0;
+        int currentSum = 0;
+        int totalCount = 0;
+        
+        // Loop through the array using end pointer
+        for (int end = 0; end < nums.size(); ++end) {
+            // Add current element to the sum
+            currentSum += nums[end];
+            
+            // Slide the window while condition is met
+            while (start < end && (nums[start] == 0 || currentSum > goal)) {
+                if (nums[start] == 1) {
+                    prefixZeros = 0;
+                } else {
+                    prefixZeros += 1;
+                }
+                
+                currentSum -= nums[start];
+                start += 1;
             }
-            while(e + 1 < nums.size() && sum != goal)
-                sum += nums[++e];
-            if(e + 1 == nums.size() && sum != goal)
-                return ans;
-            while(s < e && nums[s] == 0) {
-                ++s;
-                ++frontzero;
+            
+            // Count subarrays when window sum matches the goal
+            if (currentSum == goal) {
+                totalCount += 1 + prefixZeros;
             }
-            int min_len = e - s + 1;
-            while(e + 1 < nums.size() && nums[e + 1] == 0){
-                ++e;
-                ++backzero;
-            }
-            int max_len = min_len + backzero + frontzero;
-            ans += (frontzero + 1) * (backzero + 1);
-            s++;
         }
-        return ans;
+        
+        return totalCount;
     }
 };
