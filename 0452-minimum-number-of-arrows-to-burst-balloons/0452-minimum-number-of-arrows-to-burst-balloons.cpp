@@ -10,10 +10,10 @@ public:
         });
         int curr_end = points[0][1];
         for(int i = 1; i < points.size(); ++i) {
-            if(points[i][0] <= curr_end)
-                continue;
-            curr_end = points[i][1];
-            ++ans;
+            if(points[i][0] > curr_end) {
+                curr_end = points[i][1];
+                ++ans;   
+            }
         }
         return ans;
     }
