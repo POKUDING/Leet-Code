@@ -9,7 +9,7 @@ public:
             return vec1[1] < vec2[1];
         });
         int curr_end = points[0][1];
-        for(int i = 1; i < points.size(); ++i) {
+        for(int i = 1, size = points.size(); i < size; ++i) {
             if(points[i][0] > curr_end) {
                 curr_end = points[i][1];
                 ++ans;   
