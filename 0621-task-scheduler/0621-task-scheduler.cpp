@@ -1,3 +1,4 @@
+const static auto _ = [](){cin.tie(0); cout.tie(0); ios::sync_with_stdio(0); return nulltpr;}();
 class Solution {
 public:
     int leastInterval(vector<char>& tasks, int n) {
