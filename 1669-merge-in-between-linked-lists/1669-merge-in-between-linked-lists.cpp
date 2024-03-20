@@ -1,5 +1,5 @@
-#pragma GCC optimize("O3,unroll-loops")
-#pragma GCC target("avx2,bmi,bmi2,lzcnt,popcnt")
+// #pragma GCC optimize("O3,unroll-loops")
+// #pragma GCC target("avx2,bmi,bmi2,lzcnt,popcnt")
 const static auto _ = [](){cin.tie(0); cout.tie(0); ios::sync_with_stdio(0); return nullptr; }();
 class Solution {
 public:
