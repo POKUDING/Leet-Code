@@ -1,3 +1,4 @@
+const static auto _ = [](){cin.tie(0); cout.tie(0); ios::sync_with_stdio(0); return nullptr;}();
 class Solution {
 public:
     int numSubarrayProductLessThanK(vector<int>& nums, int k) {
@@ -7,7 +8,6 @@ public:
             mul *= nums[e];
             while(s < e && mul >= k)
                 mul /= nums[s++];
-            // cout << s << " " << e << " " << nums[s] << " " << nums[e] << " " <<mul <<"\n";
             if(mul < k)
                 ans += e - s + 1;
         }
