@@ -3,16 +3,17 @@ class Solution {
 public:
     long long countSubarrays(vector<int>& nums, int k) {
         int max_num = *max_element(nums.begin(),nums.end());
-        unordered_map<long long, int> mp;
         int cnt = 0;
         long long ans = 0;
-        for(int e = 0; e < nums.size(); ++e) {
-            if(nums[e] == max_num) {
+        int len = nums.size();
+        for(int s = 0, e = 0; e < len; ++e) {
+            if(nums[e] == max_num)
                 ++cnt;
-                mp[cnt] = e;
+            while (cnt >= k){
+                ans += len - e;
+                if(nums[s++] == max_num)
+                    --cnt;
             }
-            if(cnt >= k)
-                ans += mp[cnt - k + 1] + 1;
         }
         return ans;
     }
