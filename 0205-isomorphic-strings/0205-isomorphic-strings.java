@@ -3,16 +3,16 @@ class Solution {
         int len = s.length();
         Map<Character, Character> map = new HashMap<Character,Character>();
         Set<Character> set = new HashSet<Character>();
+        char[] sArr = s.toCharArray();
+        char[] tArr = t.toCharArray();
         for(int i = 0; i < len; ++i){
-            if(map.containsKey(s.charAt(i))) {
-                if(map.get(s.charAt(i)) != t.charAt(i))
+            if(map.containsKey(sArr[i])) {
+                if(map.get(sArr[i]) != tArr[i])
                     return false;
-            } else if(set.contains(t.charAt(i)))
+            } else if(map.containsValue(tArr[i]))
                 return false;
-            else {
-                map.put(s.charAt(i), t.charAt(i));
-                set.add(t.charAt(i));
-            }
+            else
+                map.put(sArr[i], tArr[i]);
         }
         return true;
     }
