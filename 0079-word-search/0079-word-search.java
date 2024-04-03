@@ -11,7 +11,7 @@ class Solution {
 
         for(int i = 0; i < y_size; ++i) {
             for(int j = 0; j < x_size; ++j) {
-                if(dfs(i,j,0,board,charArr))
+                if(board[i][j] == charArr[0] && dfs(i,j,0,board,charArr))
                     return true;
             }
         }
