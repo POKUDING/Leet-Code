@@ -6,7 +6,7 @@ class Solution {
                 ++depth;
             else if (s.charAt(i) == ')')
                 --depth;
-            max_depth = max_depth > depth ? max_depth : depth;
+            max_depth = Math.max(max_depth, depth);
         }
         return max_depth;
     }
