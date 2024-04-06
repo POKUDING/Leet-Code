@@ -18,7 +18,6 @@ class Solution {
                 ++j;
             else
                 sb.append(s.charAt(i));
-
         }
         return sb.toString();
     }
