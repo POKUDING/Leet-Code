@@ -21,9 +21,8 @@ class Solution {
 
         for(int i = 0; i <= row; ++i) {
             int start = i;
-            while(!st.isEmpty() && st.peekLast()[0] > rowArr[i]) {
+            while(!st.isEmpty() && st.peekLast()[0] >= rowArr[i]) {
                 int[] curr = st.pollLast();
-                // System.out.println(max);
                 max = Math.max(max, curr[0] * (i - curr[1]));
                 start = curr[1];
             }
