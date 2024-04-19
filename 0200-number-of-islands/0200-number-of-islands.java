@@ -12,7 +12,7 @@ class Solution {
     }
 
     public int bfs(char[][] grid, int y, int x) {
-        Deque<int[]> que = new ArrayDeque<>();
+        Deque<int[]> que = new LinkedList<>();
 
         grid[y][x] = 2;
         que.push(new int[]{y, x});
