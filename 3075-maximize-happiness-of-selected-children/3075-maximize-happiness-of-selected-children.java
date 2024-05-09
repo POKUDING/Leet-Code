@@ -4,7 +4,9 @@ class Solution {
         long ans = 0;
         for(int i = 0; i < k; ++i) {
             int currHappy = happiness[happiness.length - 1 - i] - i;
-            ans += currHappy < 0 ? 0 : currHappy;
+            if (currHappy <= 0)
+                return ans;
+            ans += currHappy;
         }
         return ans;
     }
