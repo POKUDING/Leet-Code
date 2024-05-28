@@ -1,0 +1,17 @@
+class Solution {
+    public int equalSubstring(String s, String t, int maxCost) {
+        int[] prefixSum = new int[s.length() + 1];
+        int rtn = 0;
+
+        prefixSum[1] = Math.abs(s.charAt(0) - t.charAt(0));
+        for(int i = 1; i < s.length(); ++i)
+            prefixSum[i + 1] = prefixSum[i] + Math.abs(s.charAt(i) - t.charAt(i));
+        for(int i = 0, j = 1; j < prefixSum.length; ++j) {
+            while(i <= j && prefixSum[j] - prefixSum[i] > maxCost)
+                ++i;
+            // if(prefixSum[j] - prefixSum[i] <= maxCost)
+            rtn = Math.max(rtn, j - i);
+        }
+        return rtn;
+    }
+}
