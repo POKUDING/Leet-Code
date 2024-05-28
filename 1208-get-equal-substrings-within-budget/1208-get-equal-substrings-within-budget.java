@@ -7,9 +7,8 @@ class Solution {
         for(int i = 1; i < s.length(); ++i)
             prefixSum[i + 1] = prefixSum[i] + Math.abs(s.charAt(i) - t.charAt(i));
         for(int i = 0, j = 1; j < prefixSum.length; ++j) {
-            while(i <= j && prefixSum[j] - prefixSum[i] > maxCost)
+            while(prefixSum[j] - prefixSum[i] > maxCost)
                 ++i;
-            // if(prefixSum[j] - prefixSum[i] <= maxCost)
             rtn = Math.max(rtn, j - i);
         }
         return rtn;
