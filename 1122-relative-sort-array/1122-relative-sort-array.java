@@ -1,25 +1,23 @@
 class Solution {
     public int[] relativeSortArray(int[] arr1, int[] arr2) {
-        // Convert int[] to Integer[] for sorting
-        Integer[] arr1Integer = Arrays.stream(arr1).boxed().toArray(Integer[]::new);
-        
-        Map<Integer, Integer> map = new HashMap<>();
-        for (int i = 0; i < arr2.length; ++i) {
-            map.put(arr2[i], i);
-        }
-        
-        Arrays.sort(arr1Integer, (num1, num2) -> {
-            Integer num1Idx = map.get(num1);
-            Integer num2Idx = map.get(num2);
-            num1Idx = (num1Idx == null) ? 10001 : num1Idx;
-            num2Idx = (num2Idx == null) ? 10001 : num2Idx;
-            if (num1Idx.equals(num2Idx)) {
-                return Integer.compare(num1, num2);
+        int countNums[] = new int[1001];
+        int rtn[] = new int[arr1.length];
+        int idx = 0;
+
+        for(int num : arr1)
+            ++countNums[num];
+        for(int arr2Num : arr2) {
+            while(countNums[arr2Num] > 0) {
+                --countNums[arr2Num];
+                rtn[idx++] = arr2Num;
             }
-            return Integer.compare(num1Idx, num2Idx);
-        });
-        
-        // Convert Integer[] back to int[]
-        return Arrays.stream(arr1Integer).mapToInt(Integer::intValue).toArray();
+        }
+        for(int i = 0; i < 1001; ++ i) {
+            while(countNums[i] > 0) {
+                --countNums[i];
+                rtn[idx++] = i;
+            }
+        }
+        return rtn;
     }
 }
