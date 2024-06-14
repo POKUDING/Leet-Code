@@ -1,14 +1,13 @@
 class Solution {
     public int minIncrementForUnique(int[] nums) {
-        int curr = 0;
-        int rtn = 0;
         Arrays.sort(nums);
-
-        for(int num : nums) {
-            curr = Math.max(curr, num);
-            rtn += curr - num;
-            ++curr;
+        int res = 0;
+        for (int i = 1; i < nums.length; i++) {
+            while (nums[i - 1] >= nums[i]) {
+                nums[i]++;
+                res++;
+            }
         }
-        return rtn;
+        return res;
     }
 }
