@@ -6,7 +6,7 @@ class Solution {
         int mid = 0;
         int cnt = 0;
 
-        while(min < max && cnt++ < 50) {
+        while(min < max) {
             mid = (min + max) / 2 + 1;
             // System.out.println("mid: " + mid);
             if(isPossible(position, m, mid))
