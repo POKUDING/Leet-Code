@@ -14,16 +14,12 @@ class Solution {
                 if(num == 0)
                     break;
             }
-            System.out.println(mappedNum);
             rtn[i] = nums[i];
             map.put(nums[i], mappedNum);
         }
         Arrays.sort(rtn, (a, b)-> {
             return map.get(a) - map.get(b);
         });
-        // for(int i = 0; i < rtn.length; ++i) {
-        //     rtn[i] = nums[map.get(rtn[i])];
-        // }
         return Arrays.stream(rtn).mapToInt(Integer::intValue).toArray();
     }
 }
