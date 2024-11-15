@@ -8,7 +8,7 @@ class Solution {
         while (rightIdx > 0 && arr[rightIdx] >= arr[rightIdx - 1])
             --rightIdx;
 
-        int ans = Math.max(arr.length - leftIdx - 1, rightIdx);
+        int ans = Math.min(arr.length - leftIdx - 1, rightIdx);
         
         int i = leftIdx;
         int j = arr.length - 1;
@@ -16,8 +16,8 @@ class Solution {
             if (arr[i] <= arr[j])
                 --j;
             else
-                --i
-            ans = Math.max(ans, j - i)
+                --i;
+            ans = Math.min(ans, j - i);
         }
         return ans;
     }
