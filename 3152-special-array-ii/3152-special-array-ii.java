@@ -12,12 +12,8 @@ class Solution {
         }
 
         for (int i = 0; i < queries.length; i++) {
-            int left = queries[i][0];
-            int right = queries[i][1];
             
-            int specialCount = prefix[right] - prefix[left];
-            
-            result[i] = (specialCount == 0);
+            result[i] = (prefix[queries[i][0]] - prefix[queries[i][1]] == 0);
         }
 
         return result;
