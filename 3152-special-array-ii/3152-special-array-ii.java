@@ -16,7 +16,7 @@ class Solution {
             int left = queries[i][0];
             int right = queries[i][1];
             
-            int specialCount = prefix[right] - (left > 0 ? prefix[left] : 0);
+            int specialCount = prefix[right] - prefix[left];
             
             result[i] = (specialCount == 0);
         }
