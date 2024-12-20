@@ -15,24 +15,20 @@
  */
 class Solution {
     public TreeNode reverseOddLevels(TreeNode root) {
-        // if (root == null || root.left == null || root.right == null) 
-        //     return root;
-        
-        levelTraverse(root.left, root.right, 0);
+        dfs(root.left, root.right, 0);
         return root;
     }
+    
+    private void dfs(TreeNode left, TreeNode right, int depth) {
+        if (left == null && right == null) return;
 
-    private void levelTraverse(TreeNode node1, TreeNode node2, int level) {
-        if (node1 == null || node2 == null)
-            return;
-        
-        if (level % 2 == 0) {
-            int val = node1.val;
-            node1.val = node2.val;
-            node2.val = val;
+        if (depth % 2 == 0) {
+            int temp = left.val;
+            left.val = right.val;
+            right.val = temp;
         }
 
-        levelTraverse(node1.left, node2.right, level + 1);
-        levelTraverse(node1.right, node2.left, level + 1);
+        dfs(left.left, right.right, depth + 1);
+        dfs(left.right, right.left, depth + 1);
     }
 }
