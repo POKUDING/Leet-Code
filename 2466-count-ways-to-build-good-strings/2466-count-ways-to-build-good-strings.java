@@ -2,7 +2,7 @@ class Solution {
     public int countGoodStrings(int low, int high, int zero, int one) {
         int mod = 1_000_000_007;
         int[] dp = new int[high + 1];
-        dp[0] = 1; // Base case: 1 way to create an empty string
+        dp[0] = 1;
 
         for (int i = 0; i <= high; i++) {
             if (dp[i] > 0) {
