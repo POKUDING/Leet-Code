@@ -9,9 +9,9 @@ var mergeAlternately = function(word1, word2) {
 
     while(i < word1.length || i < word2.length) {
         if(i < word1.length)
-            rtn += word1.charAt(i);
+            rtn += word1[i];
         if(i < word2.length)
-            rtn += word2.charAt(i);
+            rtn += word2[i];
         ++i;
     }
     return rtn;
