@@ -9,4 +9,4 @@ select
 from
     Transactions
 group by
-    country, month;
+    month, country;
