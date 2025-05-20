@@ -1,6 +1,8 @@
-# Write your MySQL query statement below
-select e1.name
-from Employee e1
-inner join Employee e2 on e1.id = e2.managerId
-group by e2.managerId
-having count(e2.managerId) >= 5
+SELECT E1.name
+FROM Employee E1
+JOIN (
+    SELECT managerId, COUNT(*) AS directReports
+    FROM Employee
+    GROUP BY managerId
+    HAVING COUNT(*) >= 5
+) E2 ON E1.id = E2.managerId;
